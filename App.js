@@ -18,7 +18,7 @@ import Agriculture2 from './src/components/course/agriculture2';
 import Art2 from './src/components/course/art2';
 import Service2 from './src/components/course/service2';
 
-import { fromRight } from 'react-navigation-transitions';
+import { fadeIn } from 'react-navigation-transitions';
 
 const MainNavigator = createStackNavigator({
   Home: {screen: Title_Page},
@@ -40,7 +40,7 @@ const MainNavigator = createStackNavigator({
   Mathe:{screen:Mathe}
 },
 {
-  transitionConfig: () => fromRight(),
+  transitionConfig: () => fadeIn(),
   defaultNavigationOptions: {
     headerStyle: {
       backgroundColor: '#04b4cf',

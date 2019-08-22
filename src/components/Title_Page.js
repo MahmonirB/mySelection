@@ -1,26 +1,58 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, View, Image } from 'react-native';
+import { Platform, StyleSheet, View, Image,Animated,Dimensions,Easing } from 'react-native';
 import { Text, Button, Thumbnail, Subtitle } from 'native-base';
 
-
+const {height}=Dimensions.get("window");
 export default class Title_Page extends Component {
+    constructor(props){
+        super(props);
+    }
+    componentWillMount(){
+        this.animatedValue1=new Animated.Value(-50);
+        this.animatedValue2=new Animated.Value(height);
+    }
+    componentDidMount(){
+       Animated.parallel([
+            Animated.timing(this.animatedValue1,{
+                toValue:0,
+                duration:1500,
+                easing: Easing.ease
+            }),
+            Animated.timing(this.animatedValue2,{
+                toValue:0,
+                duration:1500,
+                easing: Easing.ease
+            })
+        
+        ]).start();
+    }
   static navigationOptions = {
     header: null,
   }
 render(){
   const { navigate } = this.props.navigation;
+  const animatedStyle1={
+      transform:[{
+          translateY:this.animatedValue1
+      }]
+  }
+  const animatedStyle2={
+    transform:[{
+        translateY:this.animatedValue2
+    }]
+}
   return(
 <View style={styles.container}>
-<View style={[styles.container, styles.welcome]}>
+<Animated.View style={[styles.container, styles.welcome,animatedStyle1]}>
           <Thumbnail square source={require("../../assets/img/title3.png")} style={styles.pic} />
           <Text style={styles.welcome}>اپلیکیشن انتخاب رشته تحصیلی</Text>
           <Text style={styles.subTitle}>راهنمایی و مشاوره به دانش آموزان و والدین گرامی برای آگاهی از نحوه انتخاب رشته تحصیلی</Text>
-          <Image source={require('../../assets/img/bullet.png')} style={styles.bullet} />
-        </View>
-        <View style={styles.btn}>
+          {/* <Image source={require('../../assets/img/bullet.png')} style={styles.bullet} /> */}
+        </Animated.View>
+        <Animated.View style={[styles.btn,animatedStyle2]}>
           <Button transparent onPress={() => navigate('AboutUs')}><Text style={styles.btnText}>درباره ما</Text></Button>
           <Button transparent onPress={() => navigate('Title2')}><Text style={styles.btnText}>بعدی</Text></Button>
-        </View>
+        </Animated.View>
 </View>
   )
 }

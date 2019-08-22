@@ -1,30 +1,79 @@
 
 
 import React, { Component } from 'react';
-import { Platform, StyleSheet, View,Image} from 'react-native';
-import { Text, Button, Thumbnail, Subtitle } from 'native-base';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Platform, StyleSheet, View,Image,Animated,Dimensions,Easing} from 'react-native';
+import { Text, Button, Thumbnail } from 'native-base';
 
+const {height}=Dimensions.get('window');
 
 class Title_Page2 extends Component {
+  constructor(props){
+    super(props);
+}
   static navigationOptions = {
     header: null,
   };
+  componentWillMount(){
+    this.animatedValue1=new Animated.Value(-50);
+    this.animatedValue2=new Animated.Value(1);
+    this.animatedValue3=new Animated.Value(height);
+  }
+  componentDidMount(){
+    Animated.parallel([
+      Animated.timing(this.animatedValue1,{
+        toValue:0,
+        duration:1500,
+        easing:Easing.ease
+      }),
+      Animated.timing(this.animatedValue3,{
+        toValue:0,
+        duration:1000
+      }),
+      Animated.sequence([
+      Animated.timing(this.animatedValue2,{
+        toValue:0.2,
+        duration:500,
+        easing:Easing.cubic,
+        delay:200
+      }),
+      Animated.timing(this.animatedValue2,{
+        toValue:1,
+        duration:500,
+        easing:Easing.cubic
+      })])
+    ]).start();
+
+  }
   render() {
     const { navigate } = this.props.navigation;
+    const animatedStyle1={
+      transform:[{
+        translateY:this.animatedValue1
+      }]
+    }
+    const animatedStyle2={
+      opacity :this.animatedValue2
+    }
+    const animatedStyle3={
+      transform:[{
+          translateY:this.animatedValue3
+        }]
+    }
     return (
       <View style={styles.container}>
-        <View style={[styles.container, styles.welcome]} >
+        <Animated.View style={[styles.container, styles.welcome,animatedStyle1]} >
           <Thumbnail square source={require("../../assets/img/title.png")} style={{ width: 100, height: 100 }} />
           <Text style={styles.welcome}>آشنایی با رشته های تحصیلی دوره دوم متوسطه</Text>
           <Text style={styles.subTitle}>برای آشنایی با شرایط ثبت نام در رشته های تحصیلی دوره دوم متوسطه و  آینده شغلی و رشته های دانشگاهی مرتبط با آن کلیک گنید.</Text>
-          <Image source={require('../../assets/img/bullet2.png')} style={styles.bullet} />
-          <Button full rounded onPress={() => navigate('Help')} style={styles.helpButton} ><Text style={styles.helpbtn}>آشنایی با رشته های تحصیلی</Text></Button>
-            </View>
-        <View style={styles.btn}>
+          {/* <Image source={require('../../assets/img/bullet2.png')} style={styles.bullet} />   */}
+          <Animated.View style={animatedStyle2}>
+            <Button full rounded onPress={() => navigate('Help')} style={styles.helpButton} ><Text style={styles.helpbtn}>آشنایی با رشته های تحصیلی</Text></Button>
+          </Animated.View>
+          </Animated.View>
+        <Animated.View style={[styles.btn,animatedStyle3]}>
             <Button transparent onPress={() => navigate('Home')}><Text style={styles.btnText}>قبلی</Text></Button>
             <Button transparent onPress={() => navigate('Register')}><Text style={styles.btnText}>شروع</Text></Button>
-        </View>
+        </Animated.View>
       </View>
     );
   }
