@@ -10,13 +10,7 @@ import Mathe from './src/components/course/mathe';
 import Exprimental from './src/components/course/exprimental';
 import Humanity from './src/components/course/humanity';
 import Industry from './src/components/course/industry';
-import Agriculture from './src/components/course/agriculture';
-import Art from './src/components/course/art';
-import Service from './src/components/course/service';
 import Industry2 from './src/components/course/industry2';
-import Agriculture2 from './src/components/course/agriculture2';
-import Art2 from './src/components/course/art2';
-import Service2 from './src/components/course/service2';
 
 import { fadeIn } from 'react-navigation-transitions';
 
@@ -27,14 +21,8 @@ const MainNavigator = createStackNavigator({
   AboutUs:{screen:About_Us},
   Title2:{screen:Title_Page2},
   Help:{screen:Help},
-  Agriculture:{screen:Agriculture},
-  Art:{screen:Art},
   Industry:{screen:Industry},
-  Service:{screen:Service},
-  Agriculture2:{screen:Agriculture2},
-  Art2:{screen:Art2},
   Industry2:{screen:Industry2},
-  Service2:{screen:Service2},
   Humanity:{screen:Humanity},
   Exprimental:{screen:Exprimental},
   Mathe:{screen:Mathe}

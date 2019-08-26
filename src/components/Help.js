@@ -59,34 +59,7 @@ class Help extends Component {
                 <Left>
                     <Button transparent onPress={() => navigate('Industry')}><Text style={styles.link}>مشاهده</Text></Button>
                 </Left>
-                <Body><Text style={styles.listTxt}>صنعت</Text></Body>
-                <Right>
-                    <Thumbnail square source={require('../../assets/img/title.png')} style={styles.thumb}/>
-                </Right>
-            </ListItem>
-            <ListItem>
-                <Left>
-                    <Button transparent onPress={() => navigate('Service')}><Text style={styles.link}>مشاهده</Text></Button>
-                </Left>
-                <Body><Text style={styles.listTxt}>خدمات</Text></Body>
-                <Right>
-                    <Thumbnail square source={require('../../assets/img/title.png')} style={styles.thumb}/>
-                </Right>
-            </ListItem>
-            <ListItem>
-                <Left>
-                    <Button transparent onPress={() => navigate('Agriculture')}><Text style={styles.link}>مشاهده</Text></Button>
-                </Left>
-                <Body><Text style={styles.listTxt}>کشاورزی</Text></Body>
-                <Right>
-                    <Thumbnail square source={require('../../assets/img/title.png')} style={styles.thumb}/>
-                </Right>
-            </ListItem>
-            <ListItem last>
-                <Left>
-                    <Button transparent onPress={() => navigate('art')}><Text style={styles.link}>مشاهده</Text></Button>
-                </Left>
-                <Body><Text style={styles.listTxt}>هنر</Text></Body>
+                <Body><Text style={styles.listTxt}>معرفی رشته ها</Text></Body>
                 <Right>
                     <Thumbnail square source={require('../../assets/img/title.png')} style={styles.thumb}/>
                 </Right>
@@ -102,34 +75,7 @@ class Help extends Component {
                 <Left>
                     <Button transparent onPress={() => navigate('Industry2')}><Text style={styles.link}>مشاهده</Text></Button>
                 </Left>
-                <Body><Text style={styles.listTxt}>صنعت</Text></Body>
-                <Right>
-                    <Thumbnail square source={require('../../assets/img/title.png')} style={styles.thumb}/>
-                </Right>
-            </ListItem>
-            <ListItem>
-                <Left>
-                    <Button transparent onPress={() => navigate('Service2')}><Text style={styles.link}>مشاهده</Text></Button>
-                </Left>
-                <Body><Text style={styles.listTxt}>خدمات</Text></Body>
-                <Right>
-                    <Thumbnail square source={require('../../assets/img/title.png')} style={styles.thumb}/>
-                </Right>
-            </ListItem>
-            <ListItem>
-                <Left>
-                    <Button transparent onPress={() => navigate('Agriculture2')}><Text style={styles.link}>مشاهده</Text></Button>
-                </Left>
-                <Body><Text style={styles.listTxt}>کشاورزی</Text></Body>
-                <Right>
-                    <Thumbnail square source={require('../../assets/img/title.png')} style={styles.thumb}/>
-                </Right>
-            </ListItem>
-            <ListItem last>
-                <Left>
-                    <Button transparent onPress={() => navigate('Art2')}><Text style={styles.link}>مشاهده</Text></Button>
-                </Left>
-                <Body><Text style={styles.listTxt}>هنر</Text></Body>
+                <Body><Text style={styles.listTxt}>معرفی رشته ها</Text></Body>
                 <Right>
                     <Thumbnail square source={require('../../assets/img/title.png')} style={styles.thumb}/>
                 </Right>
