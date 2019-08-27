@@ -1,5 +1,4 @@
 import {createStackNavigator, createAppContainer} from 'react-navigation';
-import {Thumbnail} from 'native-base';
 import Title_Page from './src/components/Title_Page';
 import Register_Score from './src/components/Register_Score';
 import Total_Report from './src/components/Total_Report';
@@ -11,7 +10,8 @@ import Exprimental from './src/components/course/exprimental';
 import Humanity from './src/components/course/humanity';
 import Industry from './src/components/course/industry';
 import Industry2 from './src/components/course/industry2';
-
+import {Root} from 'native-base';
+import React from 'react';
 import { fadeIn } from 'react-navigation-transitions';
 
 const MainNavigator = createStackNavigator({
@@ -46,4 +46,7 @@ const MainNavigator = createStackNavigator({
 // #007c8f
 const App = createAppContainer(MainNavigator);
 
-export default App;
+export default () =>
+<Root>
+  <App />
+</Root>;

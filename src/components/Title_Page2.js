@@ -66,13 +66,14 @@ class Title_Page2 extends Component {
           <Text style={styles.welcome}>آشنایی با رشته های تحصیلی دوره دوم متوسطه</Text>
           <Text style={styles.subTitle}>برای آشنایی با شرایط ثبت نام در رشته های تحصیلی دوره دوم متوسطه و  آینده شغلی و رشته های دانشگاهی مرتبط با آن کلیک گنید.</Text>
           {/* <Image source={require('../../assets/img/bullet2.png')} style={styles.bullet} />   */}
-          <Animated.View style={animatedStyle2}>
-            <Button full rounded onPress={() => navigate('Help')} style={styles.helpButton} ><Text style={styles.helpbtn}>آشنایی با رشته های تحصیلی</Text></Button>
+          <Animated.View style={[animatedStyle2,styles.txtAlign]}>
+            <Button transparent rounded onPress={() => navigate('Help')} ><Text style={styles.helpbtn}>آشنایی با رشته های تحصیلی</Text></Button>
+            <Button transparent rounded onPress={() => navigate('AboutUs')}><Text style={styles.helpbtn}>درباره ما</Text></Button>
           </Animated.View>
           </Animated.View>
         <Animated.View style={[styles.btn,animatedStyle3]}>
-            <Button transparent onPress={() => navigate('Home')}><Text style={styles.btnText}>قبلی</Text></Button>
-            <Button transparent onPress={() => navigate('Register')}><Text style={styles.btnText}>شروع</Text></Button>
+            <Button transparent onPress={() => navigate('Home')}><Text style={styles.prevBtn}>قبلی</Text></Button>
+            <Button onPress={() => navigate('Register')} style={styles.nextBtn}><Text style={styles.btnText}>شروع</Text></Button>
         </Animated.View>
       </View>
     );
@@ -108,28 +109,41 @@ const styles = StyleSheet.create({
   btnText: {
     fontFamily: 'sans',
     fontSize: 14,
-    color: '#faa819',
+    color: '#FFFFFF',
+  },
+  prevBtn:{
+    color:'#007c8f',
+    fontFamily: 'sans',
+    fontSize: 14,
+    textAlign:'center'
   },
   btn: {
     flex: 0,
     flexDirection:'row',
     alignItems: 'flex-end',
     justifyContent: 'space-between',
+    marginBottom:20,
   },
   helpbtn:{
     fontFamily: 'sans',
     fontSize: 14,
-    color:'#fff',
-  },
-  helpButton:{
-    backgroundColor:'#007c8f',
-    borderColor:'#007c8f',
+    color:'#007c8f',
   },
   bullet:{
     width:30,
     height:20,
     marginBottom:20,
     marginTop:20
-      },
+      },   
+  nextBtn:{
+    backgroundColor:'#007c8f',
+    borderRadius:20,
+    width:90,
+    justifyContent: 'center',
+    height:40,
+  },
+  txtAlign:{
+    alignItems: 'center',
+  }
 });
 export default Title_Page2;
