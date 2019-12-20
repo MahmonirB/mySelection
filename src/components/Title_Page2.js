@@ -64,16 +64,17 @@ class Title_Page2 extends Component {
         <Animated.View style={[styles.container, styles.welcome,animatedStyle1]} >
           <Thumbnail square source={require("../../assets/img/title.png")} style={{ width: 100, height: 100 }} />
           <Text style={styles.welcome}>آشنایی با رشته های تحصیلی دوره دوم متوسطه</Text>
-          <Text style={styles.subTitle}>برای آشنایی با شرایط ثبت نام در رشته های تحصیلی دوره دوم متوسطه و  آینده شغلی و رشته های دانشگاهی مرتبط با آن کلیک گنید.</Text>
+          <Text style={styles.subTitle}>برای آشنایی با شرایط ثبت نام در رشته های تحصیلی دوره دوم متوسطه و  آینده شغلی و رشته های دانشگاهی مرتبط با آن کلیک کنید.</Text>
           {/* <Image source={require('../../assets/img/bullet2.png')} style={styles.bullet} />   */}
           <Animated.View style={[animatedStyle2,styles.txtAlign]}>
             <Button transparent rounded onPress={() => navigate('Help')} ><Text style={styles.helpbtn}>آشنایی با رشته های تحصیلی</Text></Button>
+            <Button transparent rounded onPress={() => navigate('Guide')}><Text style={styles.helpbtn}>راهنمای کسب نمرات لازم</Text></Button>
             <Button transparent rounded onPress={() => navigate('AboutUs')}><Text style={styles.helpbtn}>درباره ما</Text></Button>
-          </Animated.View>
+            </Animated.View>
           </Animated.View>
         <Animated.View style={[styles.btn,animatedStyle3]}>
             <Button transparent onPress={() => navigate('Home')}><Text style={styles.prevBtn}>قبلی</Text></Button>
-            <Button onPress={() => navigate('Register')} style={styles.nextBtn}><Text style={styles.btnText}>شروع</Text></Button>
+            <Button onPress={() => navigate('Register1')} style={styles.nextBtn}><Text style={styles.btnText}>شروع</Text></Button>
         </Animated.View>
       </View>
     );

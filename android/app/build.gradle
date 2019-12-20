@@ -106,8 +106,8 @@ android {
         applicationId "com.myselection"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode 121
+        versionName "1.0.1"
     }
     splits {
         abi {
@@ -142,6 +142,12 @@ storeFile file(MYAPP_RELEASE_STORE_FILE)
 storePassword MYAPP_RELEASE_STORE_PASSWORD
 keyAlias MYAPP_RELEASE_KEY_ALIAS
 keyPassword MYAPP_RELEASE_KEY_PASSWORD
+if (project.hasProperty('MYAPP_UPLOAD_STORE_FILE')) {
+                storeFile file(MYAPP_UPLOAD_STORE_FILE)
+                storePassword MYAPP_UPLOAD_STORE_PASSWORD
+                keyAlias MYAPP_UPLOAD_KEY_ALIAS
+                keyPassword MYAPP_UPLOAD_KEY_PASSWORD
+            }
 }
 }
 buildTypes {
@@ -152,6 +158,7 @@ signingConfig signingConfigs.release
 }
 
 dependencies {
+    implementation project(':@react-native-community_async-storage')
     implementation project(':react-native-vector-icons')
     implementation project(':react-native-gesture-handler')
     implementation fileTree(dir: "libs", include: ["*.jar"])

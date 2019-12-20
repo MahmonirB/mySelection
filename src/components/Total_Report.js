@@ -23,9 +23,10 @@ class Total_Report extends Component {
         }
     static navigationOptions = {
         title: "نمایش انتخاب رشته",
-        headerRight: <Thumbnail small source={require('../../assets/img/title3.png')} style={{marginRight:20}}/>
+        headerRight: <Thumbnail small source={require('../../assets/img/title3.png')} style={{marginRight:20}} />
       };
       caculateReport= (score) => {
+
           let temp=["false","false","false","false","false","false","false","false","false","false","false","false"];
          if(score[0]>=kar_industry[0] && score[6]>=kar_industry[1] && score[7]>=kar_industry[2]){temp[0]="true";}
           if(score[0]>=kar_service[0] && score[6]>=kar_service[1] && score[7]>=kar_service[2]){temp[1]="true"}
@@ -106,12 +107,12 @@ class Total_Report extends Component {
          </List>)
         }
     render() {
+        const { navigate } = this.props.navigation;
       const score=this.props.navigation.getParam("score","No score sent");
       return (
         <Container>
             <Content style={{padding:15}}>
             <Text style={styles.header1}>نمایش نتیجه انتخاب رشته</Text>
-            {/* <Text style={styles.bodytxt}>scorre:{JSON.stringify(score)}</Text> */}
              {this.caculateReport(score)}
             </Content>
         </Container>

@@ -5,7 +5,7 @@ import { Text, Button, Container, Content, Footer, Thumbnail, FooterTab, Input, 
 import Icon from 'react-native-vector-icons/FontAwesome';
 import AsyncStorage from '@react-native-community/async-storage';
 
-class Register_Score extends Component {
+class Register_Score2 extends Component {
     constructor(props){
         super(props);
         this.state={
@@ -16,7 +16,7 @@ class Register_Score extends Component {
 
     }
     componentDidMount(){
-        AsyncStorage.getItem('score3').then(scoreNumber =>{
+        AsyncStorage.getItem('score2').then(scoreNumber =>{
             if(scoreNumber){
                 let ss=JSON.parse(scoreNumber);
                 this.setState({score:ss})
@@ -49,23 +49,21 @@ class Register_Score extends Component {
         })
       }
     static navigationOptions = {
-        title: "ثبت نمرات پایه نهم",
-        headerRight: <Thumbnail small source={require('../../assets/img/title3.png')} style={{marginRight:20}}/>,
+        title: "ثبت نمرات پایه هشتم",
+        headerRight: <Thumbnail small source={require('../../assets/img/title3.png')} style={{marginRight:20}} />,
     };
-    goToNextLevel= (navigate,score1,score2) => {
-        AsyncStorage.setItem('score3',JSON.stringify(this.state.score));
-        navigate('Report1',{score: this.state.score,score1:score1,score2:score2})
+    goToNextLevel= (navigate,score1) => {
+        AsyncStorage.setItem('score2',JSON.stringify(this.state.score));
+        navigate('Register',{score2: this.state.score, score1:score1})
     }
     render() {
         const { navigate } = this.props.navigation;
         const score1=this.props.navigation.getParam("score1","No score sent");
-        const score2=this.props.navigation.getParam("score2","No score sent");
         return (
             <Container style={styles.container}>
                 <Content>
-                    <Text style={styles.Reg_txt}>نمرات <Text style={[styles.Reg_txt,{color:'red',fontWeight:'bold'}]}>خرداد ماه</Text> <Text style={[styles.Reg_txt,{fontWeight:'bold'}]}>پایه نهم</Text> خود را ثبت کنید:</Text>
-
-                   <Item rounded style={[styles.itemCon,{borderColor: this.state.color["8"]}]}>
+                    <Text style={styles.Reg_txt}>نمرات <Text style={[styles.Reg_txt,{color:'red',fontWeight:'bold'}]}>خرداد ماه</Text> <Text style={[styles.Reg_txt,{fontWeight:'bold'}]}>پایه هشتم</Text> خود را ثبت کنید:</Text>
+                    <Item rounded style={[styles.itemCon,{borderColor: this.state.color["8"]}]}>
                         <Input value={this.state.score[8] || null} ref={c => { this.mainRef[8] = c}} onFocus={() => this.focusedInput("8")} onBlur={()=> this.blureInput("8")} onChangeText={(text) => this.showResult(text,"8")} style={styles.inputTxt} placeholder='نمره قرآن را وارد کنید' placeholderTextColor="#ccc" keyboardType='numeric'/>
                         <Icon active name='bookmark' size={16} color="#666" />
                     </Item>                    
@@ -113,13 +111,13 @@ class Register_Score extends Component {
                 <Footer>
                     <FooterTab style={{ backgroundColor: '#faa819'}} >
 
-                        <Button vertical transparent onPress={() => navigate('Register2')}>
+                        <Button vertical transparent onPress={() => navigate('Register1')}>
                             <Icon name="arrow-left" size={18} color="#fff" />
                             <Text style={styles.footerTxt}>مرحله قبل</Text>
                         </Button>
                         <Button vertical transparent onPress={async () =>{
                             try {
-                                await AsyncStorage.removeItem('score3');
+                                await AsyncStorage.removeItem('score2');
                                 this.setState({score:[0,0,0,0,0,0,0,0,0,0,0]});
                                 Toast.show({
                                     text:"حافظه با موفقیت پاک شد.",
@@ -161,7 +159,7 @@ class Register_Score extends Component {
                             buttonStyle:{margin:10,alignItems:'flex-start',justifyContent:'flex-start'},
                             buttonTextStyle:{fontFamily:'sans',fontSize:12}
                         }) : 
-                         this.goToNextLevel(navigate,score1,score2)
+                         this.goToNextLevel(navigate,score1)
                          :
                          Toast.show({
                             text:"نمرات را وارد کنید",
@@ -174,7 +172,7 @@ class Register_Score extends Component {
                         })
                          }} >
                             <Icon name="arrow-right" size={20} color="#fff" />
-                            <Text style={styles.footerTxt}>میانگین نمرات</Text>
+                            <Text style={styles.footerTxt}>ادامه</Text>
                         </Button>
                     </FooterTab>
                 </Footer>
@@ -220,4 +218,4 @@ const styles = StyleSheet.create({
         marginRight:20,
     },
 });
-export default Register_Score;
+export default Register_Score2;
